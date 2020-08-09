@@ -3,8 +3,6 @@ name: PHP Composer
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -38,3 +36,13 @@ jobs:
     
     - name: PHPUNIT
       run: vendor/bin/phpunit
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "demo-ipresence" #Must be unique in Heroku
+          heroku_email: "xgc1986@gmail.com"

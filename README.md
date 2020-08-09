@@ -124,5 +124,6 @@ Also when the response is an error (HTTP 404 or other) it will be returned too i
 
 ## Extras
 
-* I  Have added the file `Demo.postman_collection.json`, this is a Postman's collection
-* I  Have added the file `Demo.swagger.yaml`
+* I Have added the file `Demo.postman_collection.json`, this is a Postman's collection
+* I Have added the file `Demo.swagger.yaml`
+* I Have added the integration with Github and deployed to Heroku
