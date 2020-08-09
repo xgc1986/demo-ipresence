@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Demo\Infrastructure;
 
 use App\Demo\Application\Service\Cache;
+use InvalidArgumentException;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 class FilesystemCache implements Cache

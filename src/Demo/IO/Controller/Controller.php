@@ -41,9 +41,9 @@ class Controller
     }
 
     /**
+     * @param Request $request
      * @param array<mixed>|null $data
      * @param int $code
-     * @param string $format
      * @param array<mixed> $headers
      * @return Response
      */

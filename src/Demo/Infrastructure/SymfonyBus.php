@@ -45,7 +45,11 @@ class SymfonyBus implements Bus
         try {
             $result = $this->bus->dispatch($query)->last(HandledStamp::class);
         } catch (HandlerFailedException $e) {
-            throw $e->getPrevious();
+            if ($e->getPrevious() !== null) {
+                throw $e->getPrevious();
+            }
+
+            throw $e;
         }
 
         if ($result === null) {
