@@ -1,4 +1,6 @@
 {
+    "name": "xgc1986/ipresence",
+    "description": "Demo iPresence",
     "type": "project",
     "license": "proprietary",
     "require": {
