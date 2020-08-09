@@ -1,0 +1,3 @@
+# demo
+services:
+  App\Demo\Application\Service\ShoutReadModel: '@App\Demo\Infrastructure\JsonShoutReadModel'

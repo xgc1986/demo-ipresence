@@ -1,0 +1,53 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Demo"
+host: "localhost:8000"
+basePath: "/"
+schemes:
+  - "http"
+paths:
+  /shout/{author}:
+    get:
+      tags:
+        - "shout"
+      summary: "List shouts from an author"
+      operationId: "getShoutsFromAuthor"
+      parameters:
+        - name: "author"
+          in: "path"
+          description: "Name of the author (spaces must be replaced by hyphen)"
+          required: true
+          type: "string"
+        - in: "query"
+          name: "limit"
+          description: "The maximum amount of shouts"
+          required: false
+          type: "integer"
+          default: 5
+        - in: "query"
+          name: "format"
+          description: "The format of the response"
+          required: false
+          type: "array"
+          items:
+            type: "string"
+            enum:
+              - "json"
+              - "xml"
+              - "csv"
+              - "yaml"
+            default: "json"
+          default: "json"
+      responses:
+        "200":
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Shout"
+
+definitions:
+  Shout:
+    type: "string"
+

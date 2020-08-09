@@ -1,0 +1,23 @@
+version: '3'
+services:
+  demo:
+    build: .
+    container_name: demo
+    volumes:
+      - ./bin:/app/bin
+      - ./config:/app/config
+      - ./public:/app/public
+      - ./src:/app/src
+      - ./tests:/app/tests
+      - ./composer.json:/app/composer.json
+      - ./composer.lock:/app/composer.lock
+      - ./symfony.lock:/app/symfony.lock
+      - ./phpunit.xml.dist:/app/phpunit.xml.dist
+      - ./infection.json.dist:/app/infection.json.dist
+      - ./phpcs.xml.dist:/app/phpcs.xml.dist
+      - ./.env:/app/.env
+      - ./.env.test:/app/.env.test
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true

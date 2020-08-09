@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.5/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         stopOnError="true"
+         stopOnFailure="true"
+         enforceTimeLimit="true"
+>
+  <php>
+    <ini name="error_reporting" value="-1"/>
+    <server name="APP_ENV" value="test" force="true"/>
+    <server name="SHELL_VERBOSITY" value="0"/>
+    <server name="SYMFONY_PHPUNIT_REMOVE" value=""/>
+    <server name="SYMFONY_PHPUNIT_VERSION" value="7.5"/>
+    <server name="KERNEL_CLASS" value="App\Kernel"/>
+    <server name="APP_SECRET" value="$ecretf0rt3st"/>
+    <server name="SYMFONY_DEPRECATIONS_HELPER" value="999999"/>
+    <server name="THEY_SAID_SO_API_KEY" value="NONE"/>
+    <server name="QUOTES_JSON_FILE" value="tests/Demo/_assets/quotes.json"/>
+    <server name="CORS_ALLOW_ORIGIN" value="*"/>
+  </php>
+
+  <testsuites>
+    <testsuite name="Demo">
+      <directory>tests/Demo</directory>
+    </testsuite>
+  </testsuites>
+
+  <filter>
+    <whitelist>
+      <directory>src</directory>
+    </whitelist>
+  </filter>
+
+  <listeners>
+    <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+  </listeners>
+</phpunit>
