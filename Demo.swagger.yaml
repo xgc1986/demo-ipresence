@@ -2,10 +2,10 @@ swagger: "2.0"
 info:
   version: "1.0.0"
   title: "Demo"
-host: "localhost:8000"
+host: "demo-ipresence.herokuapp.com"
 basePath: "/"
 schemes:
-  - "http"
+  - "https"
 paths:
   /shout/{author}:
     get:
