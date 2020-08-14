@@ -77,7 +77,7 @@ jobs:
         with:
           add: public/js
           force: true
-          message: "[DEPLOY] version ${{needs.job1.outputs.build_number}}"
+          message: "[DEPLOY] js version ${{needs.job1.outputs.build_number}}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -29,3 +29,5 @@ console.info({
     fourRatio: 4 * (inside / exercise.totalDots),
     pi: Math.PI
 });
+
+console.info('done');
