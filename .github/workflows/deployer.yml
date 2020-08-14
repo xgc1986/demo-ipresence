@@ -61,7 +61,7 @@ jobs:
         run: cd src-js && yarn install
 
       - name: Build source code
-        run: cd src-js && yarn webpack -c webpack.config.prod.js
+        run: cd src-js && sudo yarn webpack -c webpack.config.prod.js
 
 
   deploy:
