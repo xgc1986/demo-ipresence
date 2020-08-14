@@ -28,6 +28,6 @@ infection.log
 
 ###> js ###
 src-js/node_modules
-public/js/*.js
-public/js/*.map
+#public/js/*.js
+#public/js/*.map
 ###< js ###
