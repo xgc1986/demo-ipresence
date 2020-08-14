@@ -3,9 +3,10 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
+    public: true
 
     bind:
-      $theySaidSoApiKey: '%env(THEY_SAID_SO_API_KEY)%'
+      $theySaidSoApiKey: 'xxxxx'
 
 
   App\Demo\IO\Controller\:
@@ -35,4 +36,3 @@ services:
   App\Demo\Application\Service\Cache: '@App\Demo\Infrastructure\FilesystemCache'
 
   App\Demo\Application\Service\ShoutReadModel: '@App\Demo\Infrastructure\JsonShoutReadModel'
-  #App\Demo\Application\Service\ShoutReadModel: '@App\Demo\Infrastructure\TheySaidSoShoutReadModel'

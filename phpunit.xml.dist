@@ -18,7 +18,6 @@
     <server name="KERNEL_CLASS" value="App\Kernel"/>
     <server name="APP_SECRET" value="$ecretf0rt3st"/>
     <server name="SYMFONY_DEPRECATIONS_HELPER" value="999999"/>
-    <server name="THEY_SAID_SO_API_KEY" value="NONE"/>
     <server name="QUOTES_JSON_FILE" value="tests/Demo/_assets/quotes.json"/>
     <server name="CORS_ALLOW_ORIGIN" value="*"/>
   </php>
