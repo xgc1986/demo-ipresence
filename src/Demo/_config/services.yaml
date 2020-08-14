@@ -3,7 +3,7 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: true
+
     bind:
       $theySaidSoApiKey: '%env(THEY_SAID_SO_API_KEY)%'
 

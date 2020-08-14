@@ -1,0 +1,12 @@
+{
+  "name": "src-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-loader": "^8.0.2",
+    "typescript": "^3.9.7",
+    "webpack": "^5.0.0-beta.25",
+    "webpack-cli": "^4.0.0-beta.8"
+  }
+}
