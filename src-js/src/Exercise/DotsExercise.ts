@@ -53,11 +53,11 @@ export class DotsExercise {
         for (const dot of this.dots) {
             context.beginPath();
             if (distance(dot) > 100) {
-                context.strokeStyle = 'rgba(194, 24, 7, 0.25)'
-                context.fillStyle = 'rgba(194, 24, 7, 0.25)'
+                context.strokeStyle = 'rgba(194, 24, 7, 0.25)';
+                context.fillStyle = 'rgba(194, 24, 7, 0.25)';
             } else {
-                context.strokeStyle = 'rgba(12, 56, 166, 0.25)'
-                context.fillStyle = 'rgba(12, 56, 166, 0.25)'
+                context.strokeStyle = 'rgba(12, 56, 166, 0.25)';
+                context.fillStyle = 'rgba(12, 56, 166, 0.25)';
             }
 
             context.arc(dot.x + 110, dot.y + 110, 1, 0, 2 * Math.PI);

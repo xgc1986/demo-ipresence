@@ -63,8 +63,13 @@ jobs:
       - name: Build source code
         run: cd src-js && yarn webpack -c webpack.config.prod.js
 
-      - name: ???
-        run: ls public/js -la
+      - name: add compiled files
+        uses: EndBug/add-and-commit@v4
+        with:
+          add: public/js
+          message: add compiled js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
   deploy:
