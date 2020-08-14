@@ -14,7 +14,7 @@ export class DotsExercise {
     public readonly canvas: HTMLCanvasElement;
     public readonly dots: Dot[];
 
-    constructor(totalDots: number, canvas) {
+    constructor(totalDots: number, canvas: HTMLCanvasElement) {
         this.totalDots = totalDots;
         this.canvas = canvas;
         this.dots = [];
