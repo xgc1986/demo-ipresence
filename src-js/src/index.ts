@@ -30,4 +30,4 @@ console.info({
     pi: Math.PI
 });
 
-console.info('done');
+console.info('done!');
