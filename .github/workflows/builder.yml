@@ -42,7 +42,7 @@ jobs:
       - name: PHPUNIT
         run: vendor/bin/phpunit
 
-  build-js-and-deploy:
+  build-js:
     needs: [start]
     runs-on: ubuntu-latest
     steps:
@@ -72,7 +72,7 @@ jobs:
         with:
           add: public/js
           force: true
-          message: [DEPLOY] version XXX
+          message: "[DEPLOY] version XXX"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
