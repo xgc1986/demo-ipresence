@@ -57,8 +57,8 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-          if: steps.yarn-cache.outputs.cache-hit != 'true'
-          run: cd src-js && yarn install
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: cd src-js && yarn install
 
       - name: Build source code
           run: cd src-js && yarn webpack -c webpack.config.prod.js
