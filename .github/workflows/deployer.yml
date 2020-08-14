@@ -63,6 +63,9 @@ jobs:
       - name: Build source code
         run: cd src-js && yarn webpack -c webpack.config.prod.js
 
+      - name: ???
+        run: ls public/js -la
+
 
   deploy:
     runs-on: ubuntu-latest
