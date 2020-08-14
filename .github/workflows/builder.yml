@@ -6,6 +6,17 @@ on:
 
 jobs:
 
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      build_number: ${{ steps.buildnumber.outputs.build_number }}
+    steps:
+      - name: Generate build number
+        id: buildnumber
+        uses: einaregilsson/build-number@v2
+        with:
+          token: ${{secrets.github_token}}
+
   build-php:
     runs-on: ubuntu-latest
     steps:
@@ -37,6 +48,7 @@ jobs:
         run: vendor/bin/phpunit
 
   build-js:
+    needs: [version]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -65,7 +77,7 @@ jobs:
         with:
           add: public/js
           force: true
-          message: "version XXX"
+          message: "[DEPLOY] version ${{needs.job1.outputs.build_number}}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
