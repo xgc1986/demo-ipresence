@@ -6,15 +6,7 @@ on:
 
 jobs:
 
-  start:
-    name: Build and test
-    runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[DEPLOY]')"
-    steps:
-      - run: echo true
-
   build-php:
-    needs: [start]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,7 +37,6 @@ jobs:
         run: vendor/bin/phpunit
 
   build-js:
-    needs: [start]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -74,7 +65,19 @@ jobs:
         with:
           add: public/js
           force: true
-          message: "[DEPLOY] version XXX"
+          message: "version XXX"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  deploy:
+    needs: [build-php, build-js]
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "demo-ipresence" #Must be unique in Heroku
+          heroku_email: "xgc1986@gmail.com"
+          branch: "master"
