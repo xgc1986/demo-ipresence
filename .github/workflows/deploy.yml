@@ -1,0 +1,19 @@
+name: Demo builder
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  deploy:
+      name: Build and test
+      runs-on: ubuntu-latest
+      if: "contains(github.event.head_commit.message, '[DEPLOY]')"
+      steps:
+        - uses: actions/checkout@v2
+        - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+          with:
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            heroku_app_name: "demo-ipresence" #Must be unique in Heroku
+            heroku_email: "xgc1986@gmail.com"
