@@ -25,3 +25,7 @@ infection.log
 ###> phpcs ###
 .phpcs-cache
 ###< phpcs ###
+
+###> js ###
+src-js/node_modules
+###< js ###
