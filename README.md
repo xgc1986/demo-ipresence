@@ -16,7 +16,7 @@ Once is built you can execute de project with
 docker-compose up
 ```
 
-You will need to enter in to the machine to execute tests or execute commands
+You will need to enter in to the machine to execute tests or execute commands.
 ```sh
 docker exec -it bash demo
 ```
