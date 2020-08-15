@@ -20,18 +20,18 @@ class ControllerListener implements EventSubscriberInterface
      */
     private $controller;
 
-    public function onKernelController(ControllerEvent $event)
+    public function onKernelController(ControllerEvent $event): void
     {
         $controller = $event->getController();
 
         if (is_array($controller)) {
             $this->controller = $controller[0];
-        } else {
+        } elseif ($controller instanceof ApiController ||$controller instanceof WebController) {
             $this->controller = $controller;
         }
     }
 
-    public function onKernelResponse(ResponseEvent $event)
+    public function onKernelResponse(ResponseEvent $event): void
     {
         $response = $event->getResponse();
         $request = $event->getRequest();
@@ -49,6 +49,9 @@ class ControllerListener implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @return string[]
+     */
     public static function getSubscribedEvents(): array
     {
         return [

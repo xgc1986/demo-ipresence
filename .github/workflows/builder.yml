@@ -44,8 +44,6 @@ jobs:
       - name: PHPUNIT
         run: vendor/bin/phpunit
 
-
-
   deploy:
     needs: [build]
     name: Build and test
