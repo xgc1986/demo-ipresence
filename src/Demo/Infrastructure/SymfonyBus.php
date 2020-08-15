@@ -87,6 +87,6 @@ class SymfonyBus implements Bus
     {
         $path = explode('\\', get_class($query));
 
-        return array_pop($path);
+        return array_pop($path) ?? '';
     }
 }
