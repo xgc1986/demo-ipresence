@@ -1,4 +1,4 @@
-# Demo 2
+# Demo
 
 Done with Symfony 5.1 and Docker
 
