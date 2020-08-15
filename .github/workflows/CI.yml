@@ -1,21 +1,28 @@
-name: CI
+name: Integration
 
 on:
   push:
     branches: [ master ]
 
-jobs:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
 
-  version:
-    runs-on: ubuntu-latest
-    outputs:
-      build_number: ${{ steps.buildnumber.outputs.build_number }}
-    steps:
-      - name: Generate build number
-        id: buildnumber
-        uses: einaregilsson/build-number@v2
-        with:
-          token: ${{secrets.github_token}}
+jobs:
 
   build:
     runs-on: ubuntu-latest
@@ -43,18 +50,3 @@ jobs:
 
       - name: PHPUNIT
         run: vendor/bin/phpunit
-
-  deploy:
-    needs: [build]
-    name: Build and test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: master
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "demo-ipresence" #Must be unique in Heroku
-          heroku_email: "xgc1986@gmail.com"
-          branch: "master"
