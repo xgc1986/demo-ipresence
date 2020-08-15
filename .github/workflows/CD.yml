@@ -1,10 +1,36 @@
-name: CI
+name: CD
 
 on:
   push:
     branches: [ master ]
 
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
+
 jobs:
+
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: automerge
+        uses: "pascalgn/automerge-action@f81beb99aef41bb55ad072857d43073fba833a98"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
   version:
     runs-on: ubuntu-latest
@@ -18,6 +44,9 @@ jobs:
           token: ${{secrets.github_token}}
 
   build:
+    needs:
+      - automerge
+      - version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,7 +74,8 @@ jobs:
         run: vendor/bin/phpunit
 
   deploy:
-    needs: [build]
+    needs:
+      - build
     name: Build and test
     runs-on: ubuntu-latest
     steps:
