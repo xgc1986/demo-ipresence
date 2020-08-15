@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Demo\Functional;
 
 use App\Demo\Application\Query\GetShouts;
-use App\Demo\Application\Service\Bus;
+use App\Common\Service\Bus;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
