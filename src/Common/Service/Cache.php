@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Common\Service;
 
-use Psr\Cache\InvalidArgumentException;
 use RuntimeException;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
@@ -19,7 +18,6 @@ class Cache
 
     /**
      * @return mixed|null
-     * @throws InvalidArgumentException
      */
     public function get(string $hash)
     {
@@ -34,7 +32,6 @@ class Cache
 
     /**
      * @param mixed $data
-     * @throws InvalidArgumentException
      */
     public function save(string $hash, $data, int $lifetime = 10): void
     {
@@ -48,9 +45,6 @@ class Cache
         $this->cache->save($item);
     }
 
-    /**
-     * @throws InvalidArgumentException
-     */
     public function delete(string $hash): void
     {
         $this->cache->deleteItem($hash);
