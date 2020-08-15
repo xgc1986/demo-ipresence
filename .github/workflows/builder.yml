@@ -1,4 +1,4 @@
-name: Demo builder
+name: CI
 
 on:
   push:
