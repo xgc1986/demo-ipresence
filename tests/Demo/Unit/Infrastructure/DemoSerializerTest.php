@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Demo\Unit\Infrastructure;
 
-use App\Demo\Infrastructure\DemoSerializer;
+use App\Common\Service\Serializer;
 use PHPUnit\Framework\TestCase;
 
 class DemoSerializerTest extends TestCase
@@ -20,7 +20,7 @@ class DemoSerializerTest extends TestCase
 
     public function testEncodeToJson(): void
     {
-        $serializer = new DemoSerializer();
+        $serializer = new Serializer();
         $result = $serializer->encode(self::INPUT, 'json');
         $expected = '{"object":{"b":"text_0","c":1},"b":[2,"text_3"],"c":true}';
 
@@ -29,7 +29,7 @@ class DemoSerializerTest extends TestCase
 
     public function testEncodeToCsv(): void
     {
-        $serializer = new DemoSerializer();
+        $serializer = new Serializer();
         $result = $serializer->encode(self::INPUT, 'csv');
         $expected = <<<CSV
 object.b,object.c,b.0,b.1,c
@@ -43,7 +43,7 @@ CSV;
 
     public function testEncodeToXml(): void
     {
-        $serializer = new DemoSerializer();
+        $serializer = new Serializer();
         $result = $serializer->encode(self::INPUT, 'xml');
         $expected = <<<XML
 <?xml version="1.0"?>
@@ -56,7 +56,7 @@ XML;
 
     public function testEncodeToYaml(): void
     {
-        $serializer = new DemoSerializer();
+        $serializer = new Serializer();
         $result = $serializer->encode(self::INPUT, 'yaml');
         $expected = <<<YAML
 object:

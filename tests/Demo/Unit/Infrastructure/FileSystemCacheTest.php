@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Demo\Unit\Infrastructure;
 
-use App\Demo\Infrastructure\Cache;
+use App\Common\Service\Cache;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\InvalidArgumentException;
 

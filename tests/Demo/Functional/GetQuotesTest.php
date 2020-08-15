@@ -16,8 +16,8 @@ class GetQuotesTest extends KernelTestCase
      */
     public function testGetQuotes(): void
     {
-        $container = self::bootKernel()->getContainer();
-        $bus = $container->get(Bus::class);
+        self::bootKernel();
+        $bus = self::$container->get(Bus::class);
         $doc = $bus->dispatchQuery(new GetShouts('author-0', 2));
 
         self::assertEquals([
