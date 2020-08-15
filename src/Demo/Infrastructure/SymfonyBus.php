@@ -40,7 +40,7 @@ class SymfonyBus implements Bus
         $hash = 'Q-' . $this->getName($query);
         $this->serverTime->start($hash);
 
-        if ($query instanceof CacheableQuery) {
+        if (false && $query instanceof CacheableQuery) {
             $value = $this->cache->get($this->hash($query));
 
             if ($value !== null) {

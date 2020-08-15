@@ -10,14 +10,18 @@ use App\Demo\Application\Service\ShoutReadModel;
 use App\Demo\Domain\AuthorSlug;
 use App\Demo\Domain\Limit;
 use Exception;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 class JsonShoutReadModel implements ShoutReadModel
 {
     private string $jsonFile;
 
-    public function __construct(string $jsonFile)
+    private Stopwatch $stopwatch;
+
+    public function __construct(string $jsonFile, Stopwatch $stopwatch)
     {
         $this->jsonFile = $jsonFile;
+        $this->stopwatch = $stopwatch;
     }
 
     /**
@@ -25,6 +29,7 @@ class JsonShoutReadModel implements ShoutReadModel
      */
     public function findByAuthor(AuthorSlug $author, Limit $limit): ShoutListDocument
     {
+        $this->stopwatch->start(__METHOD__);
         $quotes = $this->loadQuotes();
 
         $filtered = array_slice(array_values(array_filter(
@@ -32,6 +37,7 @@ class JsonShoutReadModel implements ShoutReadModel
             fn(ShoutDocument $quote) => $author->compare(new AuthorSlug($quote->author())) === 0
         )), 0, $limit->value());
 
+        $this->stopwatch->stop(__METHOD__);
         return new ShoutListDocument($filtered);
     }
 
