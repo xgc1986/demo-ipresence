@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Demo\Application\Document;
 
+use App\Common\Service\Bus\Document;
+
 class ShoutListDocument implements Document
 {
     /**

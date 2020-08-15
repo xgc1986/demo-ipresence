@@ -2,50 +2,46 @@
 
 declare(strict_types=1);
 
-namespace App\Demo\Infrastructure;
+namespace App\Common\Service;
 
-use App\Demo\Application\Document\Document;
-use App\Demo\Application\Query\CacheableQuery;
-use App\Demo\Application\Query\Query;
-use App\Demo\Application\Service\Bus;
-use App\Demo\Application\Service\Cache;
+use App\Common\Service\Bus\Document;
+use App\Common\Service\Bus\CacheableQuery;
+use App\Common\Service\Bus\Query;
 use Exception;
 use RuntimeException;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
+use Symfony\Component\Stopwatch\Stopwatch;
 
-class SymfonyBus implements Bus
+class Bus
 {
     private MessageBusInterface $bus;
 
     private Cache $cache;
 
-    private ServerTime $serverTime;
+    private Stopwatch $stopwatch;
 
-    public function __construct(MessageBusInterface $bus, Cache $cache, ServerTime $serverTime)
+    public function __construct(MessageBusInterface $bus, Cache $cache, Stopwatch $stopwatch)
     {
         $this->bus = $bus;
         $this->cache = $cache;
-        $this->serverTime = $serverTime;
+        $this->stopwatch = $stopwatch;
     }
 
     /**
-     * @param Query $query
-     * @return Document
      * @throws Exception
      */
     public function dispatchQuery(Query $query): Document
     {
         $hash = 'Q-' . $this->getName($query);
-        $this->serverTime->start($hash);
+        $this->stopwatch->start($hash);
 
         if ($query instanceof CacheableQuery) {
             $value = $this->cache->get($this->hash($query));
 
             if ($value !== null) {
-                $this->serverTime->add("${hash}-Hit");
-                $this->serverTime->stop($hash);
+                $this->stopwatch->stop($hash);
                 return $value;
             }
         }
@@ -72,8 +68,7 @@ class SymfonyBus implements Bus
             $this->cache->save($this->hash($query), $result->getResult(), $query->getLifetime());
         }
 
-        $this->serverTime->add("${hash}-Miss");
-        $this->serverTime->stop($hash);
+        $this->stopwatch->stop($hash);
 
         return $result->getResult();
     }

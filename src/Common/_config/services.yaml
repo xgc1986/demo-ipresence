@@ -4,5 +4,11 @@ services:
     autowire: true
     autoconfigure: true
 
+    bind:
+      $env: '%kernel.environment%'
+
   App\Common\Listener\:
     resource: '../Listener/'
+
+  App\Common\Service\:
+    resource: '../Service/'

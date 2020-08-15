@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Demo\Unit\Infrastructure;
 
-use App\Demo\Infrastructure\FilesystemCache;
+use App\Demo\Infrastructure\Cache;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\InvalidArgumentException;
 
@@ -15,7 +15,7 @@ class FileSystemCacheTest extends TestCase
      */
     public function testWorksCorrectly(): void
     {
-        $cache = new FilesystemCache();
+        $cache = new Cache();
         $cache->save('test', 123, 60);
 
         self::assertEquals(123, $cache->get('test'));
@@ -30,7 +30,7 @@ class FileSystemCacheTest extends TestCase
      */
     public function testClearCache(): void
     {
-        $cache = new FilesystemCache();
+        $cache = new Cache();
         $cache->save('test', 123, 60);
         $cache->clear();
 
@@ -39,7 +39,7 @@ class FileSystemCacheTest extends TestCase
 
     public function testIsNullIfDoesNotExist(): void
     {
-        $cache = new FilesystemCache();
+        $cache = new Cache();
 
         self::assertNull($cache->get('test'));
     }

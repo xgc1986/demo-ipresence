@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Demo\IO\Command;
+namespace App\Common\Command;
 
-use App\Demo\Infrastructure\DemoSerializer;
-use Symfony\Component\Console\Command\Command;
+use App\Common\Service\Serializer;
+use Symfony\Component\Console\Command\Command as BaseCommand;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 
-abstract class DemoCommand extends Command
+abstract class Command extends BaseCommand
 {
     /**
      * @param OutputInterface $output
@@ -25,7 +25,7 @@ abstract class DemoCommand extends Command
             return;
         }
 
-        $serializer = new DemoSerializer();
+        $serializer = new Serializer();
         $result = $serializer->encode($data, $format);
 
         $output->writeln($result);

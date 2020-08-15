@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Demo\IO\Command;
 
+use App\Common\Command\Command;
 use App\Demo\Application\Query\GetShouts;
-use App\Demo\Application\Service\Bus;
+use App\Common\Service\Bus;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Console\Question\Question;
 
-class DemoShoutsListCommand extends DemoCommand
+class DemoShoutsListCommand extends Command
 {
     protected static $defaultName = 'demo:shouts:list';
 
