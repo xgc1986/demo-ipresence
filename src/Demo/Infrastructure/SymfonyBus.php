@@ -83,7 +83,8 @@ class SymfonyBus implements Bus
         return str_replace('\\', '-', get_class($query)) . '_' . $query->getHash();
     }
 
-    private function getName(Query $query) {
+    private function getName(Query $query): string
+    {
         $path = explode('\\', get_class($query));
 
         return array_pop($path);
