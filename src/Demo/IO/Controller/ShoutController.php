@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Demo\IO\Controller;
 
 use App\Common\Controller\ApiController;
+use App\Common\Controller\EtagCacheabkeController;
 use App\Demo\Application\Query\GetShouts;
 use App\Common\Service\Bus;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/shout")
  */
-class ShoutController extends ApiController
+class ShoutController extends ApiController implements EtagCacheabkeController
 {
     /**
      * @Route("/{author}", methods={"GET"})
