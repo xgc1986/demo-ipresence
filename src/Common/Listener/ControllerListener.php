@@ -40,7 +40,7 @@ class ControllerListener implements EventSubscriberInterface
         if ($this->controller !== null
             && $this->controller instanceof EtagCacheabkeController
             && $content !== false
-            && $response->getStatusCode() >= 300
+            && $response->getStatusCode() < 300
             && $request->getMethod() === Request::METHOD_GET
         ) {
             $response->setEtag(md5($content));
