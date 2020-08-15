@@ -5,10 +5,6 @@ services:
     autoconfigure: true
     public: true
 
-    bind:
-      $theySaidSoApiKey: 'xxxxx'
-
-
   App\Demo\IO\Controller\:
     resource: '../IO/Controller/'
     tags: ['controller.service_arguments']
@@ -26,13 +22,5 @@ services:
 
   App\Demo\Infrastructure\JsonShoutReadModel:
     arguments: [ '%kernel.project_dir%/%env(QUOTES_JSON_FILE)%']
-
-  App\Demo\Infrastructure\ExceptionListener:
-    arguments: [ '%kernel.environment%' ]
-    tags:
-      - { name: kernel.event_listener, event: kernel.exception }
-
-  App\Demo\Application\Service\Bus: '@App\Demo\Infrastructure\SymfonyBus'
-  App\Demo\Application\Service\Cache: '@App\Demo\Infrastructure\FilesystemCache'
 
   App\Demo\Application\Service\ShoutReadModel: '@App\Demo\Infrastructure\JsonShoutReadModel'

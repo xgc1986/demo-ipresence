@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Common\Controller;
 
-use App\Demo\Infrastructure\DemoSerializer;
+use App\Common\Service\Serializer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -75,7 +75,7 @@ class ApiController
                 break;
         }
 
-        $serializer = new DemoSerializer();
+        $serializer = new Serializer();
 
         return new Response($serializer->encode($data, $format), $code, array_merge($headers, [
             'Content-Type' => $mime

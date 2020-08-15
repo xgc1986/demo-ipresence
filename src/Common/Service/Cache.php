@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Demo\Infrastructure;
+namespace App\Common\Service;
 
-use App\Demo\Application\Service\Cache;
-use InvalidArgumentException;
+use RuntimeException;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-class FilesystemCache implements Cache
+class Cache
 {
     private FilesystemAdapter $cache;
 
@@ -17,6 +16,9 @@ class FilesystemCache implements Cache
         $this->cache = new FilesystemAdapter();
     }
 
+    /**
+     * @return mixed|null
+     */
     public function get(string $hash)
     {
         $data = $this->cache->getItem($hash);
@@ -28,10 +30,13 @@ class FilesystemCache implements Cache
         return $data->get();
     }
 
+    /**
+     * @param mixed $data
+     */
     public function save(string $hash, $data, int $lifetime = 10): void
     {
         if ($lifetime < 0) {
-            throw new InvalidArgumentException('lifetime must be a positive number');
+            throw new RuntimeException('lifetime must be a positive number');
         }
 
         $item = $this->cache->getItem($hash);

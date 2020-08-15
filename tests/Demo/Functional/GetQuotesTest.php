@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Demo\Functional;
 
 use App\Demo\Application\Query\GetShouts;
-use App\Demo\Application\Service\Bus;
+use App\Common\Service\Bus;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -16,8 +16,8 @@ class GetQuotesTest extends KernelTestCase
      */
     public function testGetQuotes(): void
     {
-        $container = self::bootKernel()->getContainer();
-        $bus = $container->get(Bus::class);
+        self::bootKernel();
+        $bus = self::$container->get(Bus::class);
         $doc = $bus->dispatchQuery(new GetShouts('author-0', 2));
 
         self::assertEquals([

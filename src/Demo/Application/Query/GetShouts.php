@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Demo\Application\Query;
 
+use App\Common\Service\Bus\CacheableQuery;
 use App\Demo\Domain\AuthorSlug;
 use App\Demo\Domain\Limit;
 

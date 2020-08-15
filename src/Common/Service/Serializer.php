@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Demo\Infrastructure;
+namespace App\Common\Service;
 
 use RuntimeException;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\YamlEncoder;
 
-class DemoSerializer
+class Serializer
 {
     /**
      * @param mixed $data

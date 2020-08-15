@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Demo\IO\Command;
 
-use App\Demo\Application\Service\Cache;
-use Symfony\Component\Console\Command\Command;
+use App\Common\Command\Command;
+use App\Common\Service\Cache;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
