@@ -1,36 +1,10 @@
-name: CD
+name: Delivery
 
 on:
   push:
     branches: [ master ]
 
-  pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
-
 jobs:
-
-  automerge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: automerge
-        uses: "pascalgn/automerge-action@f81beb99aef41bb55ad072857d43073fba833a98"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
   version:
     runs-on: ubuntu-latest
@@ -43,39 +17,9 @@ jobs:
         with:
           token: ${{secrets.github_token}}
 
-  build:
-    needs:
-      - automerge
-      - version
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Validate composer.json and composer.lock
-        run: composer validate
-
-      - name: Cache Composer packages
-        id: composer-cache
-        uses: actions/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-php-
-
-      - name: Install dependencies
-        if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      - name: PHPSTAN
-        run: vendor/bin/phpstan analyse src --level=8
-
-      - name: PHPUNIT
-        run: vendor/bin/phpunit
-
   deploy:
     needs:
-      - build
+      - version
     name: Build and test
     runs-on: ubuntu-latest
     steps:
