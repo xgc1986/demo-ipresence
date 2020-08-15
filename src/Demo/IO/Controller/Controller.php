@@ -57,7 +57,7 @@ class Controller
             $request,
             'format',
             [
-                'json', 'csv', 'xml', 'yaml',
+                'json', 'csv', 'xml', 'yaml'
             ],
             'json'
         );
