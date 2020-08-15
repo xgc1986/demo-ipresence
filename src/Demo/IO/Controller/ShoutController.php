@@ -25,10 +25,14 @@ class ShoutController extends Controller
     ): Response {
         $result = $bus->dispatchQuery(new GetShouts($author, $this->getReqOptInt($request, 'limit', 5)));
 
-        return $this->createResponse(
+        $response = $this->createResponse(
             $request,
             $result->serialize(),
             Response::HTTP_OK
         );
+        $response->setEtag(md5($response->getContent()));
+        $response->setPublic(); // make sure the response is public/cacheable
+        $response->isNotModified($request);
+        return $response;
     }
 }
