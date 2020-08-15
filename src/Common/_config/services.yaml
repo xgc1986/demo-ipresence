@@ -1,0 +1,8 @@
+# demo
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\Common\Listener\:
+    resource: '../Listener/'
