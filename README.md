@@ -23,7 +23,7 @@ docker exec -it bash demo
 
 
 
-#### Reading the shouts
+#### Reading the shouts.
 
 By default is reading the file `src/Demo/_assets/quotes.json` that is the file provided by the exercise. If you want to read the quotes using TheySaidDo API:
 
