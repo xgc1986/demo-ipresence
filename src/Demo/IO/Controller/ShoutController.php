@@ -31,10 +31,10 @@ class ShoutController extends Controller
             Response::HTTP_OK
         );
 
-        $hash = md5($response->getContent());
+        $content = $response->getContent();
 
-        if ($hash !== false) {
-            $response->setEtag($hash);
+        if ($content !== false) {
+            $response->setEtag(md5($content));
             $response->setPublic();
             $response->isNotModified($request);
         }
