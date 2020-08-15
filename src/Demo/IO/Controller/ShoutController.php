@@ -30,9 +30,15 @@ class ShoutController extends Controller
             $result->serialize(),
             Response::HTTP_OK
         );
-        $response->setEtag(md5($response->getContent()));
-        $response->setPublic(); // make sure the response is public/cacheable
-        $response->isNotModified($request);
+
+        $hash = md5($response->getContent());
+
+        if ($hash !== false) {
+            $response->setEtag($hash);
+            $response->setPublic();
+            $response->isNotModified($request);
+        }
+
         return $response;
     }
 }
