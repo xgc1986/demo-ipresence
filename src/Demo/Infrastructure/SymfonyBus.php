@@ -21,10 +21,13 @@ class SymfonyBus implements Bus
 
     private Cache $cache;
 
-    public function __construct(MessageBusInterface $bus, Cache $cache)
+    private ServerTime $serverTime;
+
+    public function __construct(MessageBusInterface $bus, Cache $cache, ServerTime $serverTime)
     {
         $this->bus = $bus;
         $this->cache = $cache;
+        $this->serverTime = $serverTime;
     }
 
     /**
@@ -34,10 +37,15 @@ class SymfonyBus implements Bus
      */
     public function dispatchQuery(Query $query): Document
     {
+        $hash = 'Q-' . $this->getName($query);
+        $this->serverTime->start($hash);
+
         if ($query instanceof CacheableQuery) {
             $value = $this->cache->get($this->hash($query));
 
             if ($value !== null) {
+                $this->serverTime->add("${hash}-Hit");
+                $this->serverTime->stop($hash);
                 return $value;
             }
         }
@@ -64,11 +72,20 @@ class SymfonyBus implements Bus
             $this->cache->save($this->hash($query), $result->getResult(), $query->getLifetime());
         }
 
+        $this->serverTime->add("${hash}-Miss");
+        $this->serverTime->stop($hash);
+
         return $result->getResult();
     }
 
     private function hash(CacheableQuery $query): string
     {
         return str_replace('\\', '-', get_class($query)) . '_' . $query->getHash();
+    }
+
+    private function getName(Query $query) {
+        $path = explode('\\', get_class($query));
+
+        return array_pop($path);
     }
 }
