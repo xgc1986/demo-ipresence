@@ -19,6 +19,15 @@ class DefaultController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('exercise/dots.html.twig');
+        $response = $this->render('exercise/dots.html.twig');
+        $content = $response->getContent();
+
+        if ($content !== false) {
+            $response->setEtag(md5($content));
+            $response->setPublic();
+            $response->isNotModified($request);
+        }
+
+        return $response;
     }
 }
