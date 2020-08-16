@@ -1,0 +1,8 @@
+# demo
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  App\Quote\Application\Service\ShoutReadModel: '@App\Quote\Infrastructure\JsonShoutReadModel'

@@ -2,7 +2,7 @@
 
 <!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/7.5/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/9.3/phpunit.xsd"
          backupGlobals="false"
          colors="true"
          stopOnError="true"
@@ -18,13 +18,13 @@
     <server name="KERNEL_CLASS" value="App\Kernel"/>
     <server name="APP_SECRET" value="$ecretf0rt3st"/>
     <server name="SYMFONY_DEPRECATIONS_HELPER" value="999999"/>
-    <server name="QUOTES_JSON_FILE" value="tests/Demo/_assets/quotes.json"/>
+    <server name="QUOTES_JSON_FILE" value="tests/Quote/_assets/quotes.json"/>
     <server name="CORS_ALLOW_ORIGIN" value="*"/>
   </php>
 
   <testsuites>
-    <testsuite name="Demo">
-      <directory>tests/Demo</directory>
+    <testsuite name="Quote">
+      <directory>tests/Quote</directory>
     </testsuite>
   </testsuites>
 
