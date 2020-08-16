@@ -12,3 +12,7 @@ services:
 
   App\Common\Service\:
     resource: '../Service/'
+
+  App\Common\Command\:
+    resource: '../Command'
+    tags: ['console.command']
