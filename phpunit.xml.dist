@@ -20,6 +20,7 @@
     <server name="SYMFONY_DEPRECATIONS_HELPER" value="999999"/>
     <server name="QUOTES_JSON_FILE" value="tests/Quote/_assets/quotes.json"/>
     <server name="CORS_ALLOW_ORIGIN" value="*"/>
+    <server name="STATIC_HOST" value="/"/>
   </php>
 
   <testsuites>
