@@ -1,0 +1,13 @@
+# demo
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\CV\IO\Controller\:
+    resource: '../IO/Controller/'
+    tags: ['controller.service_arguments']
+
+twig:
+  default_path: '%kernel.project_dir%/templates'
+  paths: [ '%kernel.project_dir%/src/CV/_templates' ]
