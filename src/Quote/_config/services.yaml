@@ -1,0 +1,26 @@
+# demo
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  App\Quote\IO\Controller\:
+    resource: '../IO/Controller/'
+    tags: ['controller.service_arguments']
+
+  App\Quote\IO\Command\:
+    resource: '../IO/Command'
+    tags: ['console.command']
+
+  App\Quote\Application\Query\Handler\:
+    resource: '../Application/Query/Handler'
+    tags: [{name: messenger.message_handler }]
+
+  App\Quote\Infrastructure\:
+    resource: '../Infrastructure/'
+
+  App\Quote\Infrastructure\JsonShoutReadModel:
+    arguments: [ '%kernel.project_dir%/%env(QUOTES_JSON_FILE)%']
+
+  App\Quote\Application\Service\ShoutReadModel: '@App\Quote\Infrastructure\JsonShoutReadModel'
