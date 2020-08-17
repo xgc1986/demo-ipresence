@@ -3,12 +3,25 @@
     <head>
         <title>CV</title>
         <link rel="stylesheet" href="{{ static_host }}/cv.css">
+        <link rel="stylesheet" href="{{ static_host }}/fontawesome.min.css">
+        <link rel="stylesheet" href="{{ static_host }}/brands.min.css">
     </head>
     <body>
     <div class="personalinfo">
         <div class="personalinfo-name">Javier Gonzalez Cuadrado</div>
         <div class="personalinfo-extra">
             <div>Arenys de Mar, 08350, Barcelona</div>
+            <a href="https://github.com/xgc1986" rel="nofollow noopener noreferrer" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/javiergonzalezcuadrado/" rel="nofollow noopener noreferrer"
+               target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://stackoverflow.com/users/1363846/xgc1986" rel="nofollow noopener noreferrer"
+               target="_blank">
+                <i class="fab fa-stack-overflow"></i>
+            </a>
         </div>
     </div>
 
@@ -63,8 +76,13 @@
 
         <div class="section-content">
             <div class="section-subsection">
-                <div class="section-subsection-title">VTS Media: Sept 2019 – Jul 2020</div>
-
+                <div class="section-subsection-title">
+                    <img src="{{ static_host }}/vts.png" alt="VTS Media"/>
+                    <div>
+                        <div class="section-subsection-name">VTS Media</div>
+                        <div class="section-subsection-date">Sept 2019 – Jul 2020</div>
+                    </div>
+                </div>
                 <p>
                     Esta empresa tiene como producto amateur.tv que es una web de ocio adulto. En esta empresa he
                     tenido dos perfiles, uno de ellos es hacer de scrum máster tras ver que había problemas en los
@@ -90,7 +108,13 @@
             </div>
 
             <div class="section-subsection">
-                <div class="section-subsection-title">Nektria: Jun 2017– Oct 2019</div>
+                <div class="section-subsection-title">
+                    <img src="{{ static_host }}/nektria.png" alt="Nektria"/>
+                    <div>
+                        <div class="section-subsection-name">Nektria</div>
+                        <div class="section-subsection-date">Jun 2017– Oct 2019</div>
+                    </div>
+                </div>
 
                 <p>
                     Nektria es una empresa especializada en el sector de la última milla. En esta empresa he actuado
@@ -152,7 +176,13 @@
             </div>
 
             <div class="section-subsection">
-                <div class="section-subsection-title">Nakima: Jun 2014 – Jun 2016</div>
+                <div class="section-subsection-title">
+                    <img src="{{ static_host }}/nakima.png" alt="Nakima"/>
+                    <div>
+                        <div class="section-subsection-name">Nakima</div>
+                        <div class="section-subsection-date">Jun 2014 – Jun 2016</div>
+                    </div>
+                </div>
 
                 <p>
                     Nakima es una empresa que empezó con temas bursátiles, pero se fue moviendo a consultoría. Mi
@@ -172,37 +202,38 @@
                             unidireccional, y audio bidireccional.
                         </li>
                         <li>
-                            El Canal Audiodescrito (ya no existe): <u>http://elcanalaudiodescrito.com</u>. Esta web
-                            tiene como objetivo ser Netflix para la gente ciega, de tal manera podrían reproducir
-                            películas audiodescritas, toda la UX estaba dedicada para que la gente ciega pudiera navegar
-                            por esta.
+                            <a href="#" rel="nofollow noopener noreferrer" target="_blank"><u>El Canal Audiodescrito</u></a>:
+                            <b> Esta web ya no existe</b>. Esta web tiene como objetivo ser Netflix para la gente ciega,
+                            de tal manera podrían reproducir películas audiodescritas, toda la UX estaba dedicada para
+                            que la gente ciega pudiera navegar por esta.
                         </li>
                         <li>
-                            Joyer (en desarrollo): <u>http://joyer.nakima.es</u>. Esta plataforma permite a los médicos
-                            ofrecer tablas de ejercicios dinámicas a los pacientes de recuperación en función del
-                            feedback que daban los usuarios, por ejemplo, el grado de dolor que había sufrido en hacer
-                            el ejercicio, el tiempo dedicado en conseguirlo o el porcentaje del ejercicio que ha logrado
-                            realizar entre otros. El gran reto de este proyecto ha sido que los doctores que nos
-                            pidieron este proyecto no saben programar, sin embargo, se montaron unos Excel que dado la
-                            entrada que daba el usuario, les daba los datos del siguiente ejercicio que el paciente
-                            debería realizar, así que programé un compilador que transforma los Excel de los doctores a
-                            código PHP, de tal manera que la API permitía la actualización de los Excel y usar la
-                            respuesta para devolverla mediante la API. Aunque se puede usar los Excel directamente desde
-                            PHP, el compilador redujo los tiempos de respuesta de 10 minutos de media a tan solo algunos
-                            milisegundos.
+                            <a href="http://joyer.nakima.es" rel="nofollow noopener noreferrer" target="_blank"><u>
+                                    Joyer</u></a>: Esta plataforma permite a los médicos ofrecer tablas
+                            de ejercicios dinámicas a los pacientes de recuperación en función del feedback que daban
+                            los usuarios, por ejemplo, el grado de dolor que había sufrido en hacer el ejercicio, el
+                            tiempo dedicado en conseguirlo o el porcentaje del ejercicio que ha logrado realizar entre
+                            otros. El gran reto de este proyecto ha sido que los doctores que nos pidieron este proyecto
+                            no saben programar, sin embargo, se montaron unos Excel que dado la entrada que daba el
+                            usuario, les daba los datos del siguiente ejercicio que el paciente debería realizar, así
+                            que programé un compilador que transforma los Excel de los doctores a código PHP, de tal
+                            manera que la API permitía la actualización de los Excel y usar la respuesta para devolverla
+                            mediante la API. Aunque se puede usar los Excel directamente desde PHP, el compilador redujo
+                            los tiempos de respuesta de 10 minutos de media a tan solo algunos milisegundos.
                         </li>
                         <li>
-                            Quiroo (ya no existe): <u>http://quiroo.nakima.es</u>. Esta plataforma permitía comunicar a
-                            diferentes doctores de manera segura y confidencial los documentos médicos. El servidor
-                            solo guarda los ficheros cifrados, pero las claves las guardan los doctores y usuarios,
-                            todo el tema de cifrado y descifrado se hace en local con JavaScript.
+                            <a href="#"><u>Quiroo</u></a>: <b> Esta web ya no existe</b>: Esta plataforma permitía
+                            comunicar a diferentes doctores de manera segura y confidencial los documentos médicos. El
+                            servidor solo guarda los ficheros cifrados, pero las claves las guardan los doctores y
+                            usuarios, todo el tema de cifrado y descifrado se hace en local con JavaScript.
                         </li>
                         <li>
-                            Lasvi (terminado): <u>http://lasvi.nakima.es</u> Es una plataforma bursátil donde Carlos
-                            Lavignes (cliente) puede visualizar su algoritmo de manera rápida. El reto era conseguir los
-                            datos, junto al desarrollador de sistemas creamos un puente que comunicaba PHP con Python
-                            con un cliente en Java para obtener los datos bursátiles a tiempo real, Debido a la cantidad
-                            de datos que existían Doctrine era un cuello de botella y cree un ORM optimizado para la
+                            <a href="http://lasvi.nakima.es" rel="nofollow noopener noreferrer"
+                               target="_blank"><u>Lasvi</u></a>: Es una plataforma bursátil donde Carlos Lavignes
+                            (cliente) puede visualizar su algoritmo de manera rápida. El reto era conseguir los datos,
+                            junto al desarrollador de sistemas creamos un puente que comunicaba PHP con Python con un
+                            cliente en Java para obtener los datos bursátiles a tiempo real, Debido a la cantidad de
+                            datos que existían Doctrine era un cuello de botella y cree un ORM optimizado para la
                             funcionalidad, haciendo que la carga pasará de 15 minutos a pocos segundos sin aumentar el
                             coste de servidores.
                         </li>
@@ -211,7 +242,13 @@
             </div>
 
             <div class="section-subsection">
-                <div class="section-subsection-title">Multiactiva Mobile: Jun 2013 – Feb 2014</div>
+                <div class="section-subsection-title">
+                    <img src="{{ static_host }}/multiactiva.png" alt="Multiactiva Mobile"/>
+                    <div>
+                        <div class="section-subsection-name">Multiactiva Mobile</div>
+                        <div class="section-subsection-date">Jun 2013 – Feb 2014</div>
+                    </div>
+                </div>
 
                 <ul>
                     <li>
@@ -231,8 +268,14 @@
             </div>
 
             <div class="section-subsection">
-                <div class="section-subsection-title">All in Agency: Oct 2012 – Jun 2013</div>
 
+                <div class="section-subsection-title">
+                    <img src="{{ static_host }}/allin.png" alt="All in Agency"/>
+                    <div>
+                        <div class="section-subsection-name">All in Agency</div>
+                        <div class="section-subsection-date">Oct 2012 – Jun 2013</div>
+                    </div>
+                </div>
                 <ul>
                     <li>
                         Responsable de desarrollo de webs, principalmente en backend con Symfony2 (PHP)
@@ -257,7 +300,13 @@
             </div>
 
             <div class="section-subsection">
-                <div class="section-subsection-title">Mercalia: Dic 2010 – Ago 2012</div>
+                <div class="section-subsection-title">
+                    <img src="{{ static_host }}/mercalia.png" alt="Mercalia"/>
+                    <div>
+                        <div class="section-subsection-name">Mercalia Global Market</div>
+                        <div class="section-subsection-date">Dic 2010 – Ago 2012</div>
+                    </div>
+                </div>
 
                 <ul>
                     <li>
@@ -284,7 +333,10 @@
             </div>
 
             <div class="section-subsection">
-                <div class="section-subsection-title">Cuenta propia</div>
+                <div class="section-subsection-title">
+                    <img src="{{ static_host }}/me.png" alt="Cuenta propia"/>
+                    <span class="section-subsection-name">Cuenta propia</span>
+                </div>
 
                 <ul>
                     <li>
@@ -300,10 +352,14 @@
                         Creación de librerías, las 2 más importantes son:
                         <ul>
                             <li>
-                                ParallaxPagerTransformer: <u>https://github.com/xgc1986/ParallaxPagerTransformer</u>
+                                <a href="https://github.com/xgc1986/ParallaxPagerTransformer"
+                                   rel="nofollow noopener noreferrer"
+                                   target="_blank"><u>ParallaxPagerTransformer</u></a>
                             </li>
                             <li>
-                                RippleVIews: <u>https://github.com/xgc1986/RippleViews</u>
+                                <a href="https://github.com/xgc1986/ParallaxPagerTransformer"
+                                   rel="nofollow noopener noreferrer"
+                                   target="_blank"><u>RippleVIews</u></a>
                             </li>
                         </ul>
                     </li>
