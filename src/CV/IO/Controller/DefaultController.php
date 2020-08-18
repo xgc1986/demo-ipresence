@@ -18,8 +18,16 @@ class DefaultController extends WebController implements EtagCacheabkeController
     /**
      * @Route("")
      */
-    public function index(): Response
+    public function spanish(): Response
     {
         return $this->render('cv.html.twig');
+    }
+
+    /**
+     * @Route("/en")
+     */
+    public function english(): Response
+    {
+        return $this->render('cv_en.html.twig');
     }
 }
